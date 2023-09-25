@@ -10,7 +10,9 @@ function show_password(TARGET) {
 }
 
 const getUserRole = (element) => {
-    console.log("it's work!")
+    const ACTIVE_ELEMENT = element.querySelector(".active")
+    const DATA = ACTIVE_ELEMENT.getAttribute("data-role")
+    return DATA
 }
 
 
@@ -39,6 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // submit form
     REGISTER_FORM.addEventListener("submit", (e)=>{
         e.preventDefault();
-        getUserRole(LF_BLOCK);
+        // get data form
+        let role = getUserRole(LF_BLOCK);
+        // create data frame
+        const USER_DATA = {
+            role
+        }
+        console.log("USER_DATA", USER_DATA)
     })
 })
