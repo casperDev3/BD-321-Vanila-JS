@@ -315,6 +315,7 @@ header,footer {
 }
 
 .form__input_sumbit:enabled{
+    cursor: pointer;
     background: #1E3173;
 }
 
