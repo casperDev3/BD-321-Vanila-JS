@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
     <header>
         <h1 class="header_text">Header</h1>
@@ -22,17 +27,23 @@
         </div>
         <div class="form__input">
             <div class="form__input_full_name">
-                <input class="form__input_first_name" type="text" placeholder="First name" >
-                <input class="form__input_second_name" type="text" placeholder="Second name" >
+                <input class="form__input_first_name" type="text" placeholder="First name">
+                <input class="form__input_second_name" type="text" placeholder="Second name">
             </div>
-            <input class="form__input_email" type="email" placeholder="Email" >
-            <input class="form__input_password" type="password" placeholder="Password" >
-            <input class="form__input_password_reat" type="password" placeholder="Password repeat" >
-            <img onclick="show_password('.form__input_password')" class="form__input_showPassword_1" width="20" height="20" src="img/Group.png" alt=""><img onclick="show_password('.form__input_password_reat')" class="form__input_showPassword_2" width="20" height="20" src="img/Group.png" alt="">
+            <input class="form__input_email" type="email" placeholder="Email">
+            <input class="form__input_password" type="password" placeholder="Password">
+            <input class="form__input_password_reat" type="password" placeholder="Password repeat">
+            <img onclick="showPassword('.form__input_password')" class="form__input_showPassword_1" width="20"
+                height="20" src="img/Group.png" alt="">
+            <img onclick="showPassword('.form__input_password_reat')" class="form__input_showPassword_2" width="20"
+                height="20" src="img/Group.png" alt="">
         </div>
         <div class="form__register">
             <div class="form__register_checkboxANDlabel">
-                <input class="form__input_checkbox" name="checkbox_accept" type="checkbox" ><label class="form__input_checkbox_label" for="checkbox_accept">Так, я розумію та погоджуюся з Умовами обслуговування, включаючи <a href="">Угоду користувача</a> та <a href="">Політику конфіденційності</a></label>
+                <input class="form__input_checkbox" name="checkbox_accept" type="checkbox"><label
+                    class="form__input_checkbox_label" for="checkbox_accept">Так, я розумію та погоджуюся з Умовами
+                    обслуговування, включаючи <a href="">Угоду користувача</a> та <a href="">Політику
+                        конфіденційності</a></label>
             </div>
             <input class="form__input_sumbit" type="submit" value="Зареєструватись" disabled>
             <h1 class="form__register_login">Вже зареєстровані? <a href="">Увійти</a></h1>
@@ -45,4 +56,5 @@
 
     <script src="scripts/index.js"></script>
 </body>
+
 </html>

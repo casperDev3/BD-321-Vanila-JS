@@ -1,12 +1,9 @@
-function show_password(TARGET) {
-    console.log(TARGET.type)
-    const PASSWORD = document.getElementById(TARGET);
-    if (PASSWORD.type === "password") {
-        PASSWORD.type = "text";
-    }
-    else {
-        PASSWORD.type = "password";
-    }
+function showPassword(selector) {
+    // get element
+    const TARGET = document.querySelector(selector);
+    TARGET.setAttribute("type", "text")
+    // hide eye icon
+    
 }
 
 const getUserRole = (element) => {
