@@ -9,6 +9,10 @@ function show_password(TARGET) {
     }
 }
 
+const getUserRole = (element) => {
+    console.log("it's work!")
+}
+
 
 
 // start point
@@ -18,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const RIGHT_BLOCK = document.querySelector(".form__top_LFor_Rblock");
     const LF_BLOCK = document.querySelector(".form__top_LFor");
     const CHECK_BOX = document.querySelector(".form__input_checkbox");
-    const SUBMIT_BTN = document.querySelector(".form__input_sumbit")
+    const SUBMIT_BTN = document.querySelector(".form__input_sumbit");
+    const REGISTER_FORM = document.querySelector(".form")
+    
     // switch user role
     LF_BLOCK.addEventListener("click", () => {
         LEFT_BLOCK.classList.toggle('active');
@@ -29,5 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const CHECK_BOX_VALUE = CHECK_BOX.checked
         // CHECK_BOX_VALUE ? SUBMIT_BTN.disabled = !CHECK_BOX_VALUE : SUBMIT_BTN.disabled = !CHECK_BOX_VALUE;
         CHECK_BOX_VALUE ? SUBMIT_BTN.disabled = false : SUBMIT_BTN.disabled = true;
+    })
+    // submit form
+    REGISTER_FORM.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        getUserRole(LF_BLOCK);
     })
 })

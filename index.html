@@ -16,23 +16,23 @@
         <div class="form__top">
             <h1 class="form__top_text">Шукаєте роботу чи няню?</h1>
             <div class="form__top_LFor">
-                <div class="form__top_LFor_Lblock active">Шукаю роботу</div>
-                <div class="form__top_LFor_Rblock">Шукаю няню</div>
+                <div data-role="worker" class="form__top_LFor_Lblock active">Шукаю роботу</div>
+                <div data-role="client" class="form__top_LFor_Rblock">Шукаю няню</div>
             </div>
         </div>
         <div class="form__input">
             <div class="form__input_full_name">
-                <input class="form__input_first_name" type="text" placeholder="First name" required>
-                <input class="form__input_second_name" type="text" placeholder="Second name" required>
+                <input class="form__input_first_name" type="text" placeholder="First name" >
+                <input class="form__input_second_name" type="text" placeholder="Second name" >
             </div>
-            <input class="form__input_email" type="email" placeholder="Email" required>
-            <input class="form__input_password" type="password" placeholder="Password" required>
-            <input class="form__input_password_reat" type="password" placeholder="Password repeat" required>
+            <input class="form__input_email" type="email" placeholder="Email" >
+            <input class="form__input_password" type="password" placeholder="Password" >
+            <input class="form__input_password_reat" type="password" placeholder="Password repeat" >
             <img onclick="show_password('.form__input_password')" class="form__input_showPassword_1" width="20" height="20" src="img/Group.png" alt=""><img onclick="show_password('.form__input_password_reat')" class="form__input_showPassword_2" width="20" height="20" src="img/Group.png" alt="">
         </div>
         <div class="form__register">
             <div class="form__register_checkboxANDlabel">
-                <input class="form__input_checkbox" name="checkbox_accept" type="checkbox" required><label class="form__input_checkbox_label" for="checkbox_accept">Так, я розумію та погоджуюся з Умовами обслуговування, включаючи <a href="">Угоду користувача</a> та <a href="">Політику конфіденційності</a></label>
+                <input class="form__input_checkbox" name="checkbox_accept" type="checkbox" ><label class="form__input_checkbox_label" for="checkbox_accept">Так, я розумію та погоджуюся з Умовами обслуговування, включаючи <a href="">Угоду користувача</a> та <a href="">Політику конфіденційності</a></label>
             </div>
             <input class="form__input_sumbit" type="submit" value="Зареєструватись" disabled>
             <h1 class="form__register_login">Вже зареєстровані? <a href="">Увійти</a></h1>
