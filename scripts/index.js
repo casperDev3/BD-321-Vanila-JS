@@ -15,6 +15,15 @@ const getUserRole = (element) => {
     return DATA
 }
 
+const getLastNameUser = (element) => {
+    const VALUE =  element.value;
+    if (VALUE.length >= 3){
+        return VALUE
+    } else {
+        alert("Lastname to short")
+        return null
+    }
+}
 
 
 // start point
@@ -25,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const LF_BLOCK = document.querySelector(".form__top_LFor");
     const CHECK_BOX = document.querySelector(".form__input_checkbox");
     const SUBMIT_BTN = document.querySelector(".form__input_sumbit");
-    const REGISTER_FORM = document.querySelector(".form")
+    const REGISTER_FORM = document.querySelector(".form");
+    const INPUT_LAST_NAME = document.querySelector(".form__input_second_name");
     
     // switch user role
     LF_BLOCK.addEventListener("click", () => {
@@ -43,9 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         // get data form
         let role = getUserRole(LF_BLOCK);
+        let lastUserName = getLastNameUser(INPUT_LAST_NAME);
         // create data frame
         const USER_DATA = {
-            role
+            role, lastUserName
         }
         console.log("USER_DATA", USER_DATA)
     })
