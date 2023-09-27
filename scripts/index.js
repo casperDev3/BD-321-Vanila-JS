@@ -33,6 +33,9 @@ const getDataFromField = (element) => {
 
 // start point
 document.addEventListener("DOMContentLoaded", () => {
+    // read from LS
+    const USER_DATA = JSON.parse(localStorage.getItem("user"));
+    console.log(USER_DATA);
     // get element from document
     const LEFT_BLOCK = document.querySelector(".form__top_LFor_Lblock");
     const RIGHT_BLOCK = document.querySelector(".form__top_LFor_Rblock");
@@ -46,7 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const INPUT_LAST_NAME = document.querySelector(".form__input_second_name");
     const INPUT_PASSWORD = document.querySelector(".form__input_password");
     const INPUT_CONFIRM_PASSWORD = document.querySelector(".form__input_password_reat");
-
+    
+    if(USER_DATA){
+        const {userName, userLastName, userEmail, userPassword} = USER_DATA;
+        INPUT_NAME.value = userName;
+        INPUT_LAST_NAME.value = userLastName;
+        INPUT_EMAIL.value = userEmail;
+    }
     // switch user role
     LF_BLOCK.addEventListener("click", () => {
         LEFT_BLOCK.classList.toggle('active');
@@ -79,6 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const USER_DATA = {
             role, userName, userLastName, userEmail, userPassword
         }
+
+        // set to LS
+        localStorage.setItem("user", JSON.stringify(USER_DATA));
+        // set to SS
+        sessionStorage.setItem("user", JSON.stringify(USER_DATA));
+        // set to Cookie
+        const cookieObj = JSON.stringify(USER_DATA);
+        document.cookie = `user=${cookieObj}; expires=Thu, 01 Jan 2099 00:00:00 UTC; path="/"`
+
+
         console.log("USER_DATA", USER_DATA)
     })
 })
