@@ -17,13 +17,17 @@ const getUserRole = (element) => {
 const getDataFromField = (element) => {
     const VALUE = element.value;
     const TYPE = element.getAttribute("name")
+
+    if (TYPE == "last_name") {
+        if (VALUE.length >= 3) {
+            return VALUE
+        } else {
+            alert("Lastname to short")
+            return null
+        }
+    }
+    // need delete for production ##
     return VALUE
-    // if (VALUE.length >= 3) {
-    //     return VALUE
-    // } else {
-    //     alert("Lastname to short")
-    //     return null
-    // }
 }
 
 
@@ -65,6 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
         let userPassword = getDataFromField(INPUT_PASSWORD);
         let userConfirmPassword = getDataFromField(INPUT_CONFIRM_PASSWORD);
 
+        // validation data
+        if (userConfirmPassword != userPassword){
+            console.log("Password don't match, please try again!")
+            return
+        }
 
         // create data frame
         const USER_DATA = {
