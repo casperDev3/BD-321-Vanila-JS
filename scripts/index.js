@@ -19,10 +19,13 @@ const showProductsOnDOM = async (products, selector) => {
             <h2>${title}</h2>
             <h4>${price} $</h4>
             <p>${description}</p>
+            <button>
+                Add to Cart
+            </button>
         </div>
             `
         })
-    ) : html = "<h1>Products not found</h2>"
+    ) : html = "<h1>Products not found</h1>"
     // get element 
     const AREA = document.querySelector(selector)
     // instert html in DOM
