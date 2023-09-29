@@ -1,8 +1,29 @@
 const getAllProducts = async () => {
-    await fetch('https://fakestoreapi.com/products')
+    return await fetch('https://fakestoreapi.com/products')
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then((json) => { return json })
         .catch(err => console.log(err))
+
+}
+
+const showProductsOnDOM = async (products, selector) => {
+    // create html
+    let html = '';
+    products.map((e) => {
+        const { title, description, category, id, price, image } = e;
+        html += `
+        <div data-category="${category}" data-id="${id}" class="products__area_item">
+        <img src="${image}" alt="">
+        <h2>${title}</h2>
+        <h4>${price} $</h4>
+        <p>${description}</p>
+    </div>
+        `
+    })
+    // get element 
+    const AREA = document.querySelector(selector)
+    // instert html in DOM
+    AREA.innerHTML = html;
 }
 
 const addNewProduct = async () => {
@@ -20,10 +41,14 @@ const addNewProduct = async () => {
     })
         .then(res => res.json())
         .then(json => console.log(json))
+        .catch(err => console.log(err))
 }
 
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
-    await getAllProducts();
-    await addNewProduct();
+    // get products
+    const PRODUCTS = await getAllProducts();
+    // display products
+    showProductsOnDOM(PRODUCTS, ".products__area")
+    // await addNewProduct();
 })
