@@ -9,17 +9,20 @@ const getAllProducts = async () => {
 const showProductsOnDOM = async (products, selector) => {
     // create html
     let html = '';
-    products.map((e) => {
-        const { title, description, category, id, price, image } = e;
-        html += `
-        <div data-category="${category}" data-id="${id}" class="products__area_item">
-        <img src="${image}" alt="">
-        <h2>${title}</h2>
-        <h4>${price} $</h4>
-        <p>${description}</p>
-    </div>
-        `
-    })
+    // check if is elements in array
+    products.length > 0 ? (
+        products.map((e) => {
+            const { title, description, category, id, price, image } = e;
+            html += `
+            <div data-category="${category}" data-id="${id}" class="products__area_item">
+            <img src="${image}" alt="">
+            <h2>${title}</h2>
+            <h4>${price} $</h4>
+            <p>${description}</p>
+        </div>
+            `
+        })
+    ) : html = "<h1>Products not found</h2>"
     // get element 
     const AREA = document.querySelector(selector)
     // instert html in DOM
