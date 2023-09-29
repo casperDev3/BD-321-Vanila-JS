@@ -44,9 +44,14 @@ const addNewProduct = async () => {
         .catch(err => console.log(err))
 }
 
+const filterBySearchQuery = (products, query, selector_area) => {
+    let filteredProducts = products.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+    showProductsOnDOM(filteredProducts, selector_area)
+}
+
 const sortProducts = (products, type, selector_area) => {
     let sortedProducts;
-    if (type == "ASC"){
+    if (type == "ASC") {
         sortedProducts = products.sort((a, b) => a.price - b.price)
     } else {
         sortedProducts = products.sort((a, b) => b.price - a.price)
@@ -58,6 +63,7 @@ const sortProducts = (products, type, selector_area) => {
 document.addEventListener("DOMContentLoaded", async () => {
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
+    const INPUT_SEARCH = document.querySelector("#filter_search")
     // get products
     const PRODUCTS = await getAllProducts();
     // display products
@@ -66,6 +72,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // add event listeners
     INPUT_SELECT.addEventListener("change", (e) => {
         sortProducts(PRODUCTS, e.target.value, ".products__area")
+    })
+    INPUT_SEARCH.addEventListener("input", (e) => {
+        filterBySearchQuery(PRODUCTS, e.target.value, ".products__area")
     })
 
 })
