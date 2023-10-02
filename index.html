@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
     <section class="products">
         <div class="products__sort">
@@ -13,12 +15,12 @@
             <select name="sort" id="products__sort">
                 <option selected disabled>Select type SORT</option>
                 <option value="ASC">ASC</option>
-                <option value="DESC">DESC</option>             
+                <option value="DESC">DESC</option>
             </select>
         </div>
         <div class="products__filter">
             <div class="products__filter_search">
-                <label for="filter_search">  Search:</label>
+                <label for="filter_search"> Search:</label>
                 <input type="text" name="search" id="filter_search">
             </div>
 
@@ -30,10 +32,17 @@
                 </select>
             </div>
         </div>
+        <div class="products__cart">
+            <a href="#">
+                Корзина (кількість продуктів: <span class="products__cart_counter">0</span>)
+            </a>
+        </div>
         <div class="products__area">
             <!-- Products List -->
         </div>
+        
     </section>
     <script src="scripts/index.js"></script>
 </body>
+
 </html>

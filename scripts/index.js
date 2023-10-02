@@ -22,7 +22,7 @@ const showProductsOnDOM = async (products, selector) => {
             <h2>${title}</h2>
             <h4>${price} $</h4>
             <p>${description}</p>
-            <button>
+            <button data-id=${id} class="add_to_cart">
                 Add to Cart
             </button>
         </div>
@@ -33,6 +33,14 @@ const showProductsOnDOM = async (products, selector) => {
     const AREA = document.querySelector(selector)
     // instert html in DOM
     AREA.innerHTML = html;
+    // add listeners 
+    const ADD_TO_CART_BTNS = document.querySelectorAll(".add_to_cart")
+    // add listeners
+    ADD_TO_CART_BTNS.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            console.log(e.target)
+        })
+    })
 }
 
 const addNewProduct = async () => {
@@ -74,6 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
+    
     // get all products
     const PRODUCTS = await getAllProducts();
     // display products
@@ -94,6 +103,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 // cleaner LS
-document.addEventListener("DOMContentLoaded", ()=>{
-    
+document.addEventListener("DOMContentLoaded", () => {
+    localStorage.removeItem('dynamic_products')
 })
