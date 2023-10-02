@@ -39,7 +39,7 @@ const showProductsOnDOM = async (products, selector) => {
     ADD_TO_CART_BTNS.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             const PRODUCT_ID = e.target.getAttribute("data-id")
-            console.log(PRODUCT_ID)
+            addProductsToCart(PRODUCT_ID)
         })
     })
 }
@@ -78,12 +78,28 @@ const sortProducts = (products, type, selector_area) => {
     showProductsOnDOM(sortedProducts, selector_area)
 }
 
+const addProductsToCart = (product_id) => {
+    // get cart from LS
+    let cart = localStorage.getItem("cart");
+    // check if is CART
+    cart ? cart = JSON.parse(cart) : cart = [];
+    // check if cart empty
+    if (cart.length > 0) {
+        let exist = cart.some(product => product.id === product_id)
+        console.log(exist)
+    } else {
+        cart.push({ id: product_id, qty: 1 })
+    }
+    // write to LS
+    localStorage.setItem("cart", JSON.stringify(cart))
+}
+
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
-    
+
     // get all products
     const PRODUCTS = await getAllProducts();
     // display products
