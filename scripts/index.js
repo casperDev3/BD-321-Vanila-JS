@@ -1,7 +1,10 @@
 const getAllProducts = async () => {
     return await fetch('https://fakestoreapi.com/products')
         .then(res => res.json())
-        .then((json) => { return json })
+        .then((json) => {
+            localStorage.setItem("products", JSON.stringify(json))
+            return json
+        })
         .catch(err => console.log(err))
 
 }
@@ -52,6 +55,7 @@ const addNewProduct = async () => {
 
 const filterBySearchQuery = (products, query, selector_area) => {
     let filteredProducts = products.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
+    localStorage.setItem("dynamic_products", JSON.stringify(filteredProducts))
     showProductsOnDOM(filteredProducts, selector_area)
 }
 
@@ -70,17 +74,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
-    // get products
+    // get all products
     const PRODUCTS = await getAllProducts();
     // display products
     showProductsOnDOM(PRODUCTS, ".products__area")
 
     // add event listeners
     INPUT_SELECT.addEventListener("change", (e) => {
-        sortProducts(PRODUCTS, e.target.value, ".products__area")
+        // get dynamic products
+        let current_products;
+        const DYNAMIC_PRODUCTS = localStorage.getItem("dynamic_products")
+        DYNAMIC_PRODUCTS ? current_products = JSON.parse(DYNAMIC_PRODUCTS) : current_products = PRODUCTS
+        sortProducts(current_products, e.target.value, ".products__area")
     })
     INPUT_SEARCH.addEventListener("input", (e) => {
         filterBySearchQuery(PRODUCTS, e.target.value, ".products__area")
     })
 
+})
+
+// cleaner LS
+document.addEventListener("DOMContentLoaded", ()=>{
+    
 })
