@@ -43,6 +43,7 @@ const showProductsOnDOM = async (products, selector) => {
             <button data-id=${id} class="add_to_cart">
                 Add to Cart
             </button>
+            <button>Delete from Cart</button>
         </div>
             `
         })
@@ -123,8 +124,17 @@ const addProductsToCart = (product_id) => {
     showCounterCart();
 }
 
+// cleaner LS
+document.addEventListener("DOMContentLoaded", () => {
+    localStorage.removeItem('dynamic_products')
+})
+
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
+    // get path
+    const PATH = window.location.pathname
+    console.log(PATH)
+    
     showCounterCart();
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
@@ -148,7 +158,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 })
 
-// cleaner LS
-document.addEventListener("DOMContentLoaded", () => {
-    localStorage.removeItem('dynamic_products')
-})
