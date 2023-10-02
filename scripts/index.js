@@ -38,7 +38,8 @@ const showProductsOnDOM = async (products, selector) => {
     // add listeners
     ADD_TO_CART_BTNS.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-            console.log(e.target)
+            const PRODUCT_ID = e.target.getAttribute("data-id")
+            console.log(PRODUCT_ID)
         })
     })
 }
