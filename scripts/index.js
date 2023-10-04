@@ -131,20 +131,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
-    let url = location.href;
-    let queryParams = new URL(url);
-    queryParams.searchParams.set("name", "test")
-    queryParams.searchParams.set("age", "test")
-
     // get path
     const PATH = window.location.pathname
-    console.log(queryParams)
 
     showCounterCart();
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
     const REFRESH_PAGE_BTN = document.querySelector(".refresh_page")
+    const ADD_Q_BTN = document.querySelector(".add_q_params")
+    const READ_Q_BTN = document.querySelector(".read_q_params")
     // get all products
     const PRODUCTS = await getAllProducts();
     // display products
@@ -166,6 +162,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         // location.href = "https://rozetka.com.ua/ua/";
         // window.open("https://rozetka.com.ua/ua/", "_blank") // open new tab
         // window.close();
+    })
+    ADD_Q_BTN.addEventListener("click", (e)=>{
+        const url = new URL(location.href);
+        const queryParams = url.searchParams;
+        queryParams.set("name", "Jane")
+        queryParams.set("age", 21) 
+        window.open(`${url.href}`, "_self")
     })
 
 })
