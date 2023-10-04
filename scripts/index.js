@@ -12,17 +12,17 @@ const getAllProducts = async () => {
 const showCounterCart = () => {
     // get cart from LS
     const CART = localStorage.getItem("cart");
-    if (CART){
+    if (CART) {
         // get element 
         const COUNTER = document.querySelector(".products__cart_counter")
         // calc qty products
         let allProductsQty = 0;
-        JSON.parse(CART).map((e)=>{
-            allProductsQty+= e.qty;
+        JSON.parse(CART).map((e) => {
+            allProductsQty += e.qty;
         })
         // display qty 
         COUNTER.innerHTML = allProductsQty;
-    }else{
+    } else {
         return
     }
 }
@@ -131,14 +131,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
+    let url = location.href;
+    let queryParams = new URL(url);
+    queryParams.searchParams.set("name", "test")
+    queryParams.searchParams.set("age", "test")
+
     // get path
     const PATH = window.location.pathname
-    console.log(PATH)
-    
+    console.log(queryParams)
+
     showCounterCart();
     // get elements DOM
     const INPUT_SELECT = document.querySelector("#products__sort")
     const INPUT_SEARCH = document.querySelector("#filter_search")
+    const REFRESH_PAGE_BTN = document.querySelector(".refresh_page")
     // get all products
     const PRODUCTS = await getAllProducts();
     // display products
@@ -154,6 +160,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     INPUT_SEARCH.addEventListener("input", (e) => {
         filterBySearchQuery(PRODUCTS, e.target.value, ".products__area")
+    })
+    REFRESH_PAGE_BTN.addEventListener("click", (e) => {
+        location.reload(); // reload page
+        // location.href = "https://rozetka.com.ua/ua/";
+        // window.open("https://rozetka.com.ua/ua/", "_blank") // open new tab
+        // window.close();
     })
 
 })
