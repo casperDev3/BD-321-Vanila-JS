@@ -133,6 +133,23 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", async () => {
     // get path
     const PATH = window.location.pathname
+    let counter = 0
+
+    const intervalID = setInterval(() => {
+        console.log("test set interval!!")
+        counter++;
+        if (counter >= 3) {
+            clearInterval(intervalID);
+        }
+
+    }, 2000)
+
+
+
+    // console.log("test")
+    // setTimeout(()=>{
+    //     console.log("set Timeout")
+    // }, 2000)
 
     showCounterCart();
     // get elements DOM
@@ -141,12 +158,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const REFRESH_PAGE_BTN = document.querySelector(".refresh_page")
     const ADD_Q_BTN = document.querySelector(".add_q_params")
     const READ_Q_BTN = document.querySelector(".read_q_params")
+    const SCROLL_TO_BTN = document.querySelector(".scroll_to")
     // get all products
     const PRODUCTS = await getAllProducts();
     // display products
     showProductsOnDOM(PRODUCTS, ".products__area")
 
     // add event listeners
+    SCROLL_TO_BTN.addEventListener("click", () => {
+        const targetElement = document.querySelector(".scroll_to_target")
+        targetElement.scrollIntoView({
+            behavior: "smooth"
+        })
+    })
     INPUT_SELECT.addEventListener("change", (e) => {
         // get dynamic products
         let current_products;
@@ -163,12 +187,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         // window.open("https://rozetka.com.ua/ua/", "_blank") // open new tab
         // window.close();
     })
-    ADD_Q_BTN.addEventListener("click", (e)=>{
+    ADD_Q_BTN.addEventListener("click", (e) => {
         const url = new URL(location.href);
         const queryParams = url.searchParams;
         queryParams.set("name", "Jane")
-        queryParams.set("age", 21) 
+        queryParams.set("age", 21)
         window.open(`${url.href}`, "_self")
+    })
+    READ_Q_BTN.addEventListener("click", (e) => {
+        const url = new URL(location.href);
+        const queryParams = url.searchParams;
+        const name = queryParams.get('name')
+        const age = queryParams.get("age")
+        //
+        console.log(name, age)
     })
 
 })
