@@ -1,63 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/index.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Test</a></li>
-                <li><a href="#">Test</a></li>
-                <li><a href="#">Test</a></li>
-                <li><a href="#">Test</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="products">
-        <div class="products__sort">
-            <label for="products__sort">Sort Product Price:</label>
-            <select name="sort" id="products__sort">
-                <option selected disabled>Select type SORT</option>
-                <option value="ASC">ASC</option>
-                <option value="DESC">DESC</option>
-            </select>
-        </div>
-        <div class="products__filter">
-            <div class="products__filter_search">
-                <label for="filter_search"> Search:</label>
-                <input type="text" name="search" id="filter_search">
-            </div>
-
-            <div class="products__filter_category">
-                <label for="filter_category">Choose Category:</label>
-                <select name="category" id="filter_category">
-                    <option value="">Categ1</option>
-                    <option value="">Categ1</option>
-                </select>
-            </div>
-        </div>
-        <button>Clear all Cart</button>
-        <button class="refresh_page">Refresh Page</button>
-        <button class="add_q_params">Add Q</button>
-        <button class="read_q_params">Read Q</button>
-        <button class="scroll_to">Scroll To</button>
-        <div class="products__cart">
-            <a href="pages/cart.html">
-                Корзина (кількість продуктів: <span class="products__cart_counter">0</span>)
-            </a>
-        </div>
-        <div class="products__area">
-            <!-- Products List -->
-        </div>
-        <button class="scroll_to_target">Scroll To</button>
-    </section>
+    <h2>jQuery</h2>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="scripts/index.js"></script>
 </body>
-
 </html>
