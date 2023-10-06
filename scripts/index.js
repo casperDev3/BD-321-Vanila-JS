@@ -42,7 +42,7 @@ const showProductsOnDOM = async (products, selector) => {
         })
     ) : html = "<h1>Products not found</h1>"
     // show in html
-    $(selector).append(html)
+    $(selector).html(html)
 
     
     
@@ -58,14 +58,35 @@ const showProductsOnDOM = async (products, selector) => {
     })
 }
 
+const showCategoriesOnDOM = async (categories, selector) => {
+    // create html
+    let html = '<option selected disabled>Choose category</option>';
+    // check if is elements in array
+    categories.length > 0 ? (
+        categories.map((e) => {
+            html += `
+            <option value="${e}">${e}</option>
+            `
+        })
+    ) : html = ""
+    // show in html
+    $(selector).append(html)
+}
+
 // start point
 document.addEventListener("DOMContentLoaded", async () => {
     // get data
     const PRODUCTS = await getAllProducts();
-    const CATEGORY = await getAllCategory();
-    console.log(CATEGORY)
+    const CATEGORIES = await getAllCategory();
     // display data
-    showProductsOnDOM(PRODUCTS, ".products__area")
+    showProductsOnDOM(PRODUCTS, ".products__area");
+    showCategoriesOnDOM(CATEGORIES, "#category");
+    //
+    $("#category").on("change", ()=>{
+        const VALUE = $("#category").val();
+        const FILTERED_PRODUCTS = PRODUCTS.filter(products => products.category == VALUE)
+        showProductsOnDOM(FILTERED_PRODUCTS, ".products__area")
+    })
 })
 
 
