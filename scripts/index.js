@@ -1,12 +1,10 @@
 function turnOnErrorView(selector_input, selector_msg, msg_text) {
-    console.log("test Err")
     document.querySelector(selector_input).classList.add("error")
     document.querySelector(selector_msg).classList.add("error")
     document.querySelector(selector_msg).innerHTML = msg_text;
 }
 
 function turnOffErrorView(selector_input, selector_msg){
-    console.log("test")
     document.querySelector(selector_input).classList.remove("error")
     document.querySelector(selector_msg).classList.remove("error")
 }
