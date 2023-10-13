@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("pongCanvas");
     const context = canvas.getContext("2d");
 
-    const paddleWidth = 10;
-    const paddleHeight = 100;
-    const ballSize = 10;
+    const paddleWidth = 2;
+    const paddleHeight = 10;
+    const ballSize = 2;
 
     let xPaddle1 = 10;
     let yPaddle1 = canvas.height / 2 - paddleHeight / 2;
@@ -16,8 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let xBall = canvas.width / 2;
     let yBall = canvas.height / 2;
-    let ballSpeedX = 5;
-    let ballSpeedY = 5;
+    let ballSpeedX = 2;
+    let ballSpeedY = 3;
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    const winningScore = 5;
 
     function draw() {
         // Очищаємо поле
@@ -47,14 +52,85 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Перевірка на виход за межі ігрового поля
-        if (xBall < 0 || xBall > canvas.width) {
-            // Гравець втратив м'яч, ви можете додати обробку цього події
-            // і ресет гри тут
+        if (xBall < 0) {
+            computerScore++;
+            if (computerScore >= winningScore) {
+                alert("Комп'ютер виграв! Гра завершена.");
+                document.location.reload();
+            }
+            resetBall();
+        }
+
+        if (xBall > canvas.width) {
+            playerScore++;
+            if (playerScore >= winningScore) {
+                alert("Ви виграли! Гра завершена.");
+                document.location.reload();
+            }
+            resetBall();
+        }
+
+        if (yBall < 0 || yBall > canvas.height) {
+            ballSpeedY = -ballSpeedY;
+        }
+
+        // Рух платформи гравця
+        if (yPaddle1 > 0 && (yPaddle1 + paddleHeight < canvas.height)) {
+            console.log(yPaddle1)
+            if (wPressed && !sPressed) {
+                yPaddle1 -= 5;
+            } else if (sPressed && !wPressed) {
+                yPaddle1 += 5;
+            }
+        } else if (yPaddle1 > 0 && (yPaddle1 + paddleHeight >= canvas.height)) {
+            if (wPressed && !sPressed) {
+                yPaddle1 -= 5;
+            }
+        }else if (yPaddle1 <= 0 && (yPaddle1 + paddleHeight < canvas.height)) {
+            if (!wPressed && sPressed) {
+                yPaddle1 += 5;
+            }
+        }
+
+        // Рух платформи комп'ютера
+        if (yBall > (yPaddle2 + paddleHeight / 2)) {
+            yPaddle2 += 5;
+        } else {
+            yPaddle2 -= 5;
         }
 
         // Анімація
         requestAnimationFrame(draw);
     }
 
+    function resetBall() {
+        xBall = canvas.width / 2;
+        yBall = canvas.height / 2;
+        ballSpeedX = 2;
+        ballSpeedY = 3;
+    }
+
+    let wPressed = false;
+    let sPressed = false;
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "w" || e.key === "W") {
+            wPressed = true;
+        }
+        if (e.key === "s" || e.key === "S") {
+            sPressed = true;
+        }
+    });
+
+    document.addEventListener("keyup", function (e) {
+        if (e.key === "w" || e.key === "W") {
+            wPressed = false;
+        }
+        if (e.key === "s" || e.key === "S") {
+            sPressed = false;
+        }
+    });
+
     draw(); // Запускаємо гру
+
 })
