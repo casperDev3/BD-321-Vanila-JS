@@ -1,19 +1,7 @@
-.form {
-    position: relative;
-}
-
-.form__name_error {
-    position: absolute;
-    bottom: -26px;
-    font-size: 10px;
-    color: red;
-    display: none;
-}
-
-.form__name_error.error{
+#pongCanvas {
+    background-color: black;
     display: block;
-}
-
-.form__name.error {
-    border: 2px solid red;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
 }
