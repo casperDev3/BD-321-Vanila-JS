@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Рух платформи гравця
         if (yPaddle1 > 0 && (yPaddle1 + paddleHeight < canvas.height)) {
-            console.log(yPaddle1)
             if (wPressed && !sPressed) {
                 yPaddle1 -= 5;
             } else if (sPressed && !wPressed) {
