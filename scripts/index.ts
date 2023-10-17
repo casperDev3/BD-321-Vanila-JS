@@ -2,6 +2,15 @@
 //     console.log(`Name: ${name}, age: ${age}`)
 // }
 
+enum StatusCode {
+    NotFound = 404,
+    Success = 200,
+    BadRequest = 400,
+    Gatway = 500
+}
+
+console.log(StatusCode.Success)
+
 const displayInfo = (name: string, age: number): void => {
     console.log(`Name: ${name}, age: ${age}`)
 }
@@ -11,6 +20,8 @@ interface userDataTypes {
     age: number
 }
 
+let x: any = 5
+console.log((<string>x).length)
 
 
 let userName : any = "John";
@@ -27,7 +38,7 @@ let userData: userDataTypes = {
     age: 21
 }
 
-userData.name = "test"
+userData.name = "21"
 
 
 displayInfo(userName, age)
