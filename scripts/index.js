@@ -9,6 +9,12 @@ function getAllProducts(endpoint) {
 }
 function displayProducts(data) {
     console.log(data[0]);
+    var html = "";
+    data.map(function (item) {
+        var id = item.id, title = item.title;
+        html += "<h1>".concat(title, "</h1>");
+    });
+    document.querySelector(".area").innerHTML = html;
 }
 // start point
 document.addEventListener('DOMContentLoaded', function () {
